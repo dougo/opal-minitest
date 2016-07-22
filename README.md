@@ -27,9 +27,13 @@ Finally, run Rake.
 
 This will run tests and code in all project files matching `test/{test_helper,**/*_test}.{rb,opal}`. Try the example!
 
+You can pass CLI options to Minitest via the TESTOPTS environment variable:
+
+`$ bundle exec rake TESTOPTS="--verbose -n /assert/"`
+
 ## Status
 
-Opal Minitest supports everything in minitest/unit except parallel test running, plugins, CLI options, and `#capture_subprocess_io`.
+Opal Minitest supports everything in minitest/unit except parallel test running, plugins, and `#capture_subprocess_io`.
 
 Opal Minitest does not yet support minitest/spec, minitest/benchmark, minitest/mock, or minitest/pride.
 
