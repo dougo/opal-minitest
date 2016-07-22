@@ -1,6 +1,7 @@
 require 'rake'
 require 'phantomjs'
 require 'opal/minitest'
+require 'opal/minitest/arg_processor'
 
 module Opal
   module Minitest
@@ -45,12 +46,11 @@ module Opal
       end
 
       class Server < Opal::Server
-        attr_reader :requires_glob
-
         def initialize(args)
           super
 
           $omt_requires_glob = args.fetch(:requires_glob)
+          $omt_minitest_opts = ArgProcessor.process_args(Shellwords.split(ENV['TESTOPTS'] || ''))
 
           $LOAD_PATH.each { |p| append_path(p) }
           append_path 'test'

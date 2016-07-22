@@ -165,9 +165,12 @@ module Minitest
     options = {
                :io => $stdout,
               }
-    orig_args = args.dup
+    # PORT: changed
+    # orig_args = args.dup
+    options.merge!(args)
+    orig_args = options[:orig_args]
 
-    # PORT: unsupported
+    # PORT: section moved to Opal::Minitest::ArgProcessor
 #    OptionParser.new do |opts|
 #      opts.banner  = "minitest options:"
 #      opts.version = Minitest::VERSION
